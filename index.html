@@ -100,6 +100,65 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 .pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
 .pager a{text-decoration:none;font-size:14px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- readability pass ---- */
+:root{--muted:#5c4757}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--muted:#c7b4c2}}
+:root[data-theme="dark"]{--muted:#c7b4c2}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-size:16px;line-height:1.75;letter-spacing:-.01em}
+h2{font-size:20px;letter-spacing:-.02em}
+h3{font-size:17px}
+table{font-size:15.5px}
+th,td{padding:14px 16px}
+td.k{color:var(--accent)}
+.step .react{font-size:15px}
+.step .name{font-size:20px}
+.type blockquote{font-size:16px;line-height:1.7}
+.type .hint,.fact,.legend,.note{font-size:14px}
+.dd ul{font-size:15.5px;gap:6px}
+.concept q{line-height:1.55}
+
+/* ---- mobile ---- */
+@media (max-width:640px){
+  body{font-size:16px}
+  .band .wrap{padding-block:22px 18px;flex-direction:column;align-items:flex-start;gap:6px}
+  .band .brand{font-size:30px}
+  .band h1{font-size:23px}
+  main .wrap{padding-block:22px 48px;gap:30px}
+  /* key/value tables → stacked cards */
+  .kv,.kv tbody,.kv tr,.kv td{display:block;width:100%}
+  .kv tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .kv tr:last-child{border-bottom:0}
+  .kv td{padding:0;border:0}
+  .kv td.k{width:auto;white-space:normal;font-size:13px;margin-bottom:4px;letter-spacing:.02em}
+  .tbl{overflow-x:visible}
+  /* direction table: 3 cols → stacked */
+  .dir thead{display:none}
+  .dir,.dir tbody,.dir tr,.dir td{display:block;width:100%}
+  .dir tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .dir tr:last-child{border-bottom:0}
+  .dir td{padding:0;border:0}
+  .dir td.k{width:auto;margin-bottom:2px}
+  .dir td:last-child{font-weight:700;margin-top:2px}
+  .concept{padding:20px 18px}
+  .step{padding:18px 16px}
+  .facts{display:grid;grid-template-columns:1fr;gap:6px}
+  .fact{padding:8px 12px}
+  .back,.pager a{display:inline-block;padding:8px 0;font-size:15px}
+  .pager{flex-direction:column-reverse;gap:4px}
+}
+
+/* ---- lock ---- */
+.lock{min-height:60vh;display:grid;place-items:center}
+.lock form{width:100%;max-width:340px;display:grid;gap:12px;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-align:center}
+.lock h2{margin:0}
+.lock p{color:var(--muted);font-size:15px}
+.lock input{font:inherit;font-size:22px;letter-spacing:.4em;text-align:center;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.lock input:focus{outline:none;border-color:var(--accent)}
+.lock button{font:inherit;font-weight:700;font-size:16px;padding:13px;border:0;border-radius:8px;background:var(--deep);color:var(--deep-fg);cursor:pointer}
+.lock .err{color:#c0362c;font-size:14px;min-height:1.4em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lock .err{color:#ff8a80}}
 </style>
 </head>
 <body>
@@ -114,6 +173,17 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 </div></header>
 
 <main>
+<!-- ============ LOCK (hub only) ============ -->
+<section id="v-lock" class="view" hidden><div class="wrap lock">
+  <form id="lockForm" autocomplete="off">
+    <h2>비밀번호를 입력해 주세요</h2>
+    <p>가이드 허브는 관계자만 볼 수 있어요.</p>
+    <label for="pw" class="sr" style="position:absolute;left:-9999px">비밀번호</label>
+    <input id="pw" type="password" inputmode="numeric" maxlength="8" placeholder="····">
+    <button type="submit">들어가기</button>
+    <div class="err" id="pwErr" role="alert"></div>
+  </form>
+</div></section>
 <!-- ============ HUB ============ -->
 <section id="v-hub" class="view"><div class="wrap">
   <div style="display:grid;gap:10px">
@@ -144,7 +214,7 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 
   <div>
     <h2>콘텐츠별 핵심 방향</h2>
-    <div class="tbl"><table>
+    <div class="tbl"><table class="dir">
       <thead><tr><th>구분</th><th>핵심 콘텐츠 방향</th><th>시청자에게 만들어야 하는 반응</th></tr></thead>
       <tbody>
         <tr><td class="k">모델 티징</td><td>예상하지 못한 모델 선정 경험</td><td>“이게 무슨 프로젝트야?”</td></tr>
@@ -156,7 +226,7 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 
   <div>
     <h2>모든 콘텐츠 공통</h2>
-    <div class="tbl"><table><tbody>
+    <div class="tbl"><table class="kv"><tbody>
       <tr><td class="k">필수 태그</td><td><span class="tag">@teumgyul_official</span></td></tr>
       <tr><td class="k">광고 표기 <span class="chip draft">초안</span></td><td>브랜드와 협업한 콘텐츠이므로 캡션 첫 줄 또는 영상 안에 ‘유료광고 포함’ 등 광고임을 알 수 있게 표기해 주세요.</td></tr>
       <tr><td class="k">프로젝트명</td><td>Fashion in Seoul (틈결). 표기는 이 이름으로 통일해 주세요.</td></tr>
@@ -189,7 +259,7 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 
   <div>
     <h2>촬영 가이드</h2>
-    <div class="tbl"><table><tbody>
+    <div class="tbl"><table class="kv"><tbody>
       <tr><td class="k">권장 영상 길이</td><td>~15초</td></tr>
       <tr><td class="k">도입부</td><td>서울의 라이프스타일과 패션을 이색적으로 보여주는 틈결 Fashion in Seoul 프로젝트 모델 발탁 안내</td></tr>
       <tr><td class="k">제품 노출</td><td>파우치를 팔목에 착용하거나 배경에 자연스럽게 배치</td></tr>
@@ -250,7 +320,7 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 
   <div>
     <h2>촬영 가이드</h2>
-    <div class="tbl"><table><tbody>
+    <div class="tbl"><table class="kv"><tbody>
       <tr><td class="k">권장 영상 길이</td><td>~30초</td></tr>
       <tr><td class="k">도입부</td><td>스토어 외관 또는 입구 컷으로 시작. 티징 콘텐츠에서 예고한 Fashion in Seoul 프로젝트가 공개된 현장임을 알려 주세요.</td></tr>
       <tr><td class="k">매장 경험</td><td>매장 동선을 따라 둘러보며 성수에서만 할 수 있는 쇼핑 경험을 보여 주세요. 본인이 모델로 참여한 프로젝트 비주얼 앞 컷은 꼭 넣어 주세요.</td></tr>
@@ -313,7 +383,7 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 
   <div>
     <h2>촬영 가이드</h2>
-    <div class="tbl"><table><tbody>
+    <div class="tbl"><table class="kv"><tbody>
       <tr><td class="k">권장 영상 길이</td><td>~30초</td></tr>
       <tr><td class="k">도입부</td><td>첫 3초 안에 제품이 보이게 시작. 언박싱 또는 착용한 모습으로 시선을 잡아 주세요.</td></tr>
       <tr><td class="k">제품 노출</td><td>디테일 클로즈업 + 실제 코디에 매치한 전신 컷을 함께</td></tr>
@@ -361,13 +431,28 @@ td.k{width:118px;font-weight:700;white-space:nowrap}
 <script>
 (function(){
   var titles={hub:"틈결 인플루언서 가이드",teasing:"모델 티징 콘텐츠",offline:"오프라인 방문 콘텐츠",seeding:"상품 시딩 콘텐츠"};
+  var KEY="tg_hub_ok", unlocked=false;
+  try{unlocked=sessionStorage.getItem(KEY)==="1"}catch(e){}
   function show(){
     var k=(location.hash||"").replace("#","");
     if(!titles[k]||k==="hub")k="hub";
-    document.querySelectorAll(".view").forEach(function(v){v.hidden=v.id!=="v-"+k});
+    var view=(k==="hub"&&!unlocked)?"lock":k;
+    document.querySelectorAll(".view").forEach(function(v){v.hidden=v.id!=="v-"+view});
     document.getElementById("pageTitle").textContent=titles[k];
     window.scrollTo(0,0);
+    if(view==="lock")setTimeout(function(){document.getElementById("pw").focus()},50);
   }
+  document.getElementById("lockForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var pw=document.getElementById("pw");
+    if(btoa(pw.value.trim())==="MDkwNw=="){
+      unlocked=true;try{sessionStorage.setItem(KEY,"1")}catch(err){}
+      document.getElementById("pwErr").textContent="";show();
+    }else{
+      document.getElementById("pwErr").textContent="비밀번호가 맞지 않아요. 다시 입력해 주세요.";
+      pw.value="";pw.focus();
+    }
+  });
   window.addEventListener("hashchange",show);show();
 })();
 </script>
