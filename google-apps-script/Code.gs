@@ -25,7 +25,8 @@ const COLUMNS = [
   { key: 'agreeVisit',   label: '12/4–5 방문 가능',  width: 120 },
   { key: 'agreeUpload',  label: '12/6–7 업로드',   width: 120 },
   { key: 'agreeSeongsu', label: '성수 방문 가능',    width: 110 },
-  { key: 'agreeNoShow',  label: '노쇼 불가 동의',    width: 110 }
+  { key: 'agreeNoShow',  label: '노쇼 불가 동의',    width: 110 },
+  { key: 'price',        label: '고료',              width: 80 }   // 5만원 / 10만원 / 15만원 페이지 구분
 ];
 
 function doPost(e) {
@@ -58,7 +59,18 @@ function appendApplication_(data) {
 }
 
 function ensureHeader_(sheet) {
-  if (sheet.getLastRow() > 0) return;
+  if (sheet.getLastRow() > 0) {
+    // 기존 시트: 새로 추가된 열 제목(예: 고료)만 채워 넣기
+    const head = sheet.getRange(1, 1, 1, COLUMNS.length);
+    const cur = head.getValues()[0];
+    if (cur.some((v, i) => v !== COLUMNS[i].label)) {
+      head.setValues([COLUMNS.map(c => c.label)])
+        .setBackground('#B8489A').setFontColor('#FFFFFF').setFontWeight('bold')
+        .setHorizontalAlignment('center').setVerticalAlignment('middle');
+      COLUMNS.forEach((c, i) => sheet.setColumnWidth(i + 1, c.width));
+    }
+    return;
+  }
   sheet.getRange(1, 1, 1, COLUMNS.length)
     .setValues([COLUMNS.map(c => c.label)])
     .setBackground('#B8489A').setFontColor('#FFFFFF').setFontWeight('bold')

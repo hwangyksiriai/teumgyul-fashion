@@ -387,6 +387,7 @@ td.k{color:var(--accent)}
   // 구글시트 연동: Apps Script 웹 앱 배포 후 발급되는 URL(…/exec)을 넣으면 바로 연동됩니다.
   var GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyE2Ahw3NwL8NXlBBJfff7kFaT148eLbHqdWDApf5NemD6CaU5Rhjt4WCBDU6S8M3ZX/exec';
   var CAMPAIGN = '틈결 오프라인 방문';
+  var APP_PRICE = '5만원'; // 고료 구분값 (화면에는 개요에 표시)
   var form=document.getElementById('applicationForm'), btn=document.getElementById('submitBtn'), err=document.getElementById('formErr');
   var modal=document.getElementById('doneModal');
   function normIg(v){v=(v||'').trim();if(!v)return'';if(/^https?:\/\//i.test(v))return v;v=v.replace(/^@/,'').replace(/^(www\.)?instagram\.com\//i,'').replace(/^\/+|\/+$/g,'');return 'https://instagram.com/'+v}
@@ -396,7 +397,7 @@ td.k{color:var(--accent)}
     var miss=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return el.type==='checkbox'?!el.checked:!el.value.trim()});
     if(miss.length){err.textContent=miss[0].type==='checkbox'?'필수 항목에 모두 체크해 주세요.':'필수 항목을 모두 입력해 주세요.';miss[0].focus();return}
     if(form.email.value.trim()&&!form.email.checkValidity()){err.textContent='이메일 형식을 확인해 주세요.';form.email.focus();return}
-    var data={campaign:CAMPAIGN,name:form.name.value.trim(),instagram:normIg(form.instagram.value),phone:String(form.phone.value.trim()),email:form.email.value.trim(),
+    var data={campaign:CAMPAIGN,price:APP_PRICE,name:form.name.value.trim(),instagram:normIg(form.instagram.value),phone:String(form.phone.value.trim()),email:form.email.value.trim(),
       agreeVisit:'동의',agreeUpload:'동의',agreeSeongsu:'동의',agreeNoShow:'동의'};
     if(!GAS_WEB_APP_URL||GAS_WEB_APP_URL.indexOf('YOUR_WEB_APP_URL')!==-1){err.textContent='신청 접수 연동이 아직 설정되지 않았습니다.';console.log(data);return}
     btn.disabled=true;btn.textContent='제출 중...';

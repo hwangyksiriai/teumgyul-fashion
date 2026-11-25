@@ -125,6 +125,18 @@ td.k{color:var(--ink);font-weight:700}
 .step .go{color:var(--ink);font-weight:500;transition:transform .25s}
 .step:hover .go{transform:translateX(4px)}
 
+/* hub folder (details) */
+.step.folder{display:block;cursor:default}
+.step.folder summary{list-style:none;display:flex;flex-direction:column;gap:14px;cursor:pointer}
+.step.folder summary::-webkit-details-marker{display:none}
+.step.folder .chev{display:inline-block;transition:transform .2s}
+.step.folder[open] .chev{transform:rotate(180deg)}
+.step.folder:hover .go{transform:none}
+.folder-list{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--ink)}
+.folder-list a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:500}
+.folder-list a span:last-child{font-size:13px;color:var(--accent)}
+.folder-list a:hover{background:var(--masthead)}
+
 /* ---------- forms ---------- */
 .lock form{border:0;border-top:1px solid var(--ink);border-radius:0;background:none;padding:34px 4px}
 .lock h2{font-size:22px;letter-spacing:-.04em}
