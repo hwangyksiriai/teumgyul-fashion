@@ -18,6 +18,7 @@ const TIMEZONE = 'Asia/Seoul';
 
 const COLUMNS = [
   { key: 'submittedAt',  label: '제출일시',          width: 150 },
+  { key: 'price',        label: '고료',              width: 80 },   // 5만원 / 10만원 / 15만원 페이지 구분
   { key: 'name',         label: '이름',              width: 100 },
   { key: 'instagram',    label: '인스타그램',        width: 230 },
   { key: 'phone',        label: '휴대폰',            width: 130, text: true },
@@ -25,9 +26,16 @@ const COLUMNS = [
   { key: 'agreeVisit',   label: '12/4–5 방문 가능',  width: 120 },
   { key: 'agreeUpload',  label: '12/6–7 업로드',   width: 120 },
   { key: 'agreeSeongsu', label: '성수 방문 가능',    width: 110 },
-  { key: 'agreeNoShow',  label: '노쇼 불가 동의',    width: 110 },
-  { key: 'price',        label: '고료',              width: 80 }   // 5만원 / 10만원 / 15만원 페이지 구분
+  { key: 'agreeNoShow',  label: '노쇼 불가 동의',    width: 110 }
 ];
+
+// 고료별 색 — 행 전체는 옅게, 고료 칸은 진하게
+const PRICE_COLORS = {
+  '5만원':  { row: '#EEF6EA', cell: '#C9E3BD' },
+  '10만원': { row: '#EAF2FB', cell: '#BFD8F2' },
+  '15만원': { row: '#F4ECF8', cell: '#DCC5EA' }
+};
+const DEFAULT_COLOR = { row: '#FFFFFF', cell: '#EEEEEE' };
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -55,12 +63,19 @@ function appendApplication_(data) {
   const row = sheet.getLastRow() + 1;
   const values = COLUMNS.map(c => String(data[c.key] == null ? '' : data[c.key]).trim());
   COLUMNS.forEach((c, i) => { if (c.text) sheet.getRange(row, i + 1).setNumberFormat('@'); });
-  sheet.getRange(row, 1, 1, COLUMNS.length).setValues([values]).setVerticalAlignment('middle').setWrap(true);
+  const range = sheet.getRange(row, 1, 1, COLUMNS.length);
+  range.setValues([values]).setVerticalAlignment('middle').setWrap(true);
+
+  // 고료별 색
+  const pi = COLUMNS.findIndex(c => c.key === 'price');
+  const color = PRICE_COLORS[values[pi]] || DEFAULT_COLOR;
+  range.setBackground(color.row);
+  sheet.getRange(row, pi + 1).setBackground(color.cell).setFontWeight('bold').setHorizontalAlignment('center');
 }
 
 function ensureHeader_(sheet) {
   if (sheet.getLastRow() > 0) {
-    // 기존 시트: 새로 추가된 열 제목(예: 고료)만 채워 넣기
+    // 기존 시트: 열 제목이 코드와 다르면 코드 기준으로 다시 씀 (열 순서가 바뀐 경우 포함)
     const head = sheet.getRange(1, 1, 1, COLUMNS.length);
     const cur = head.getValues()[0];
     if (cur.some((v, i) => v !== COLUMNS[i].label)) {
