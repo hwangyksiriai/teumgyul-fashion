@@ -172,6 +172,18 @@ td.k{color:var(--accent)}
   .g3 td[data-label]::before{content:attr(data-label);font-size:12.5px;font-weight:700;color:var(--muted);padding-top:2px}
 }
 
+/* ---- upload flow ---- */
+.flowlist{list-style:none;margin:0;padding:0;counter-reset:f;display:grid;gap:0;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.flowlist li{counter-increment:f;position:relative;display:grid;gap:4px;padding:16px 16px 16px 58px;border-bottom:1px solid var(--line)}
+.flowlist li:last-child{border-bottom:0}
+.flowlist li::before{content:counter(f);position:absolute;left:16px;top:15px;width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-fg);font-family:var(--f-display);font-weight:700;font-size:14px;display:grid;place-items:center}
+.flowlist b{font-size:16.5px}
+.flowlist li > span{color:var(--muted)}
+.flowlist a{font-weight:700}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px}
+.mail code{font-family:var(--f-mono);font-size:15px;padding:6px 10px;background:var(--accent-soft);color:var(--accent);border-radius:4px;user-select:all;word-break:break-all}
+.mail button{font:inherit;font-size:14px;font-weight:700;padding:6px 12px;border:1.5px solid var(--accent);border-radius:4px;background:transparent;color:var(--accent);cursor:pointer}
+
 /* ---- reward ---- */
 .reward{display:grid;gap:16px}
 .reward figure{margin:0;display:grid;gap:8px}
@@ -357,6 +369,17 @@ td.k{color:var(--accent)}
     </div>
   </div>
 
+  <div>
+    <h2>업로드 &amp; 원본 전달 방법</h2>
+    <ol class="flowlist">
+      <li><b>촬영 후 내 스토리에 업로드</b><span>가이드에 맞춰 촬영한 콘텐츠를 본인 인스타그램 스토리에 올려 주세요.</span></li>
+      <li><b>원본 파일을 메일로 전달</b><span>촬영 원본을 아래 메일 주소로 보내 주세요.</span>
+        <span class="mail"><code id="mailAddr">hwangyksiriai@gmail.com</code><button type="button" id="copyMail">주소 복사</button></span></li>
+      <li><b>룩박스 매거진에 업로드</b><span>보내주신 원본은 팔로워 15만 패션 매거진 <a href="https://www.instagram.com/lookbox._/" target="_blank" rel="noopener">룩박스 @lookbox._</a> 계정에 업로드돼요. 매거진에 실리는 만큼 예쁘게 촬영해 주세요!</span></li>
+      <li><b>룩박스 게시물 리그램</b><span>룩박스에 업로드되면 해당 게시물을 리그램해 주시면 돼요.</span></li>
+    </ol>
+  </div>
+
   <div class="dd">
     <div class="do"><h3>이렇게 해 주세요 <span class="chip draft">초안</span></h3><ul>
       <li>프로젝트 내용은 다 밝히지 말고 궁금증을 남겨 주세요.</li>
@@ -508,6 +531,12 @@ td.k{color:var(--accent)}
       document.getElementById("pwErr").textContent="비밀번호가 맞지 않아요. 다시 입력해 주세요.";
       pw.value="";pw.focus();
     }
+  });
+  var cb=document.getElementById("copyMail");
+  cb.addEventListener("click",function(){
+    var addr=document.getElementById("mailAddr").textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("mailAddr"));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent="선택됨 · 복사하세요"}
+    try{navigator.clipboard.writeText(addr).then(function(){cb.textContent="복사됨";setTimeout(function(){cb.textContent="주소 복사"},1500)},sel)}catch(e){sel()}
   });
   window.addEventListener("hashchange",show);show();
 })();
