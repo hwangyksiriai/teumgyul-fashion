@@ -149,6 +149,13 @@ td.k{color:var(--accent)}
   .pager{flex-direction:column-reverse;gap:4px}
 }
 
+/* ---- reference images ---- */
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.refs figure{margin:0;display:grid;gap:8px;align-content:start}
+.refs img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+.refs figcaption{font-size:14px;color:var(--muted);line-height:1.55}
+@media (max-width:420px){.refs{gap:8px}.refs figcaption{font-size:13px}}
+
 /* ---- lock ---- */
 .lock{min-height:60vh;display:grid;place-items:center}
 .lock form{width:100%;max-width:340px;display:grid;gap:12px;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-align:center}
@@ -255,6 +262,21 @@ td.k{color:var(--accent)}
   <div class="concept">
     <div class="eyebrow">콘텐츠 콘셉트</div>
     <q>성수에서 모델 모집하길래 지원했는데… 나 진짜 모델 됐어!</q>
+  </div>
+
+  <div>
+    <h2>레퍼런스 무드</h2>
+    <div class="refs">
+      <figure>
+        <img src="images/teasing-ref-1.webp" alt="엘리베이터 안에서 신문으로 얼굴을 가린 채 서 있는 핑크 룩의 인물" width="736" height="981" loading="lazy">
+        <figcaption>신문·소품으로 얼굴을 가려 궁금증을 남기는 연출</figcaption>
+      </figure>
+      <figure>
+        <img src="images/teasing-ref-2.webp" alt="두 인물이 ‘COMING SOON’ 신문 지면을 들고 눈만 보이는 장면" width="735" height="919" loading="lazy">
+        <figcaption>‘곧 공개’ 메시지를 정면으로 보여주는 티징 컷</figcaption>
+      </figure>
+    </div>
+    <p class="note" style="margin-top:12px">참고용 무드 이미지예요. 그대로 따라 하기보다 분위기와 연출 방식을 참고해 주세요.</p>
   </div>
 
   <div>
