@@ -7,7 +7,7 @@
   --bg:#ffffff; --surface:#f7f4f5; --ink:#141113; --muted:#6f676b; --line:#e7e1e4;
   --accent:#b54b95; --accent-soft:#f7e9f2; --logo:#d76cb6;
   --deep:#141113; --deep-fg:#ffffff; --band:#ffffff; --band-fg:#141113;
-  --masthead:#fbf1f8;
+  --masthead:#fbf1f8; --divider:#f1d3e6;
   --f-serif:"Bodoni Moda","Times New Roman",serif;
   --f-body:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --r:2px;
@@ -15,11 +15,11 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f0d0e; --surface:#191617; --ink:#f3eef1; --muted:#a99fa5; --line:#2b2629;
   --accent:#e690c9; --accent-soft:#2e1b28; --logo:#e57fc4;
-  --deep:#f3eef1; --deep-fg:#141113; --band:#0f0d0e; --band-fg:#f3eef1; --masthead:#26161f; color-scheme:dark}}
+  --deep:#f3eef1; --deep-fg:#141113; --band:#0f0d0e; --band-fg:#f3eef1; --masthead:#26161f; --divider:#3a2232; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f0d0e; --surface:#191617; --ink:#f3eef1; --muted:#a99fa5; --line:#2b2629;
   --accent:#e690c9; --accent-soft:#2e1b28; --logo:#e57fc4;
-  --deep:#f3eef1; --deep-fg:#141113; --band:#0f0d0e; --band-fg:#f3eef1; --masthead:#26161f; color-scheme:dark}
+  --deep:#f3eef1; --deep-fg:#141113; --band:#0f0d0e; --band-fg:#f3eef1; --masthead:#26161f; --divider:#3a2232; color-scheme:dark}
 
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-weight:400;font-size:16px;line-height:1.8;letter-spacing:-.012em;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--accent-soft)}
@@ -171,9 +171,9 @@ td.k{color:var(--ink);font-weight:700}
 main .wrap{gap:0}
 main .wrap > *{padding-block:44px}
 main .wrap > *:first-child{padding-top:8px}
-main .wrap > * + *{border-top:6px solid var(--masthead)}
+main .wrap > * + *{border-top:6px solid var(--divider)}
 main .wrap > .concept{border-bottom:0;padding-block:44px}
-main .wrap > .concept + *{border-top:6px solid var(--masthead)}
+main .wrap > .concept + *{border-top:6px solid var(--divider)}
 main .wrap > .purpose{border-left:0;padding-left:0}
 main .wrap > .purpose .purpose-label::before{content:"";display:inline-block;width:4px;height:12px;margin-right:8px;background:var(--accent);vertical-align:-1px}
 h2{font-size:23px;margin-bottom:24px}
