@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>틈결 오프라인 방문 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: black masthead band → hub (flow of 3 contents) or one guide view, routed by #hash */
+:root{
+  --bg:#fdf6fa; --surface:#ffffff; --ink:#24151f; --muted:#6e5a67; --line:#efdce8;
+  --accent:#b8489a; --accent-soft:#fbe6f3; --draft:#9a5b00; --draft-soft:#fff1dc;
+  --band:#fbeef6; --band-fg:#24151f; --logo:#d76cb6; --deep:#b8489a; --deep-fg:#ffffff;
+  --f-display:"Space Grotesk","Noto Sans KR",system-ui,sans-serif;
+  --f-body:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171116; --surface:#21181f; --ink:#f3e9f0; --muted:#b39fad; --line:#3a2a35;
+  --accent:#ee9bd3; --accent-soft:#3d2036; --draft:#f0b860; --draft-soft:#3a2a10;
+  --band:#22161f; --band-fg:#f3e9f0; --logo:#e57fc4; --deep:#8f3477; --deep-fg:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171116; --surface:#21181f; --ink:#f3e9f0; --muted:#b39fad; --line:#3a2a35;
+  --accent:#ee9bd3; --accent-soft:#3d2036; --draft:#f0b860; --draft-soft:#3a2a10;
+  --band:#22161f; --band-fg:#f3e9f0; --logo:#e57fc4; --deep:#8f3477; --deep-fg:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;word-break:keep-all}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.band{background:var(--band);color:var(--band-fg)}
+.band .wrap{padding-block:28px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end;justify-content:space-between}
+.band .brand{font-family:"Montserrat",var(--f-display);font-weight:800;font-size:clamp(30px,7vw,44px);letter-spacing:.01em;line-height:1;color:var(--logo)}
+.band h1{margin:4px 0 0;font-family:var(--f-body);font-weight:900;font-size:clamp(24px,5vw,34px);line-height:1.2;text-wrap:balance}
+.band .meta{font-family:var(--f-mono);font-size:12px;opacity:.7}
+
+main .wrap{padding-block:28px 64px;display:grid;gap:36px}
+h2{margin:0 0 12px;font-size:19px;font-weight:700;text-wrap:balance}
+h3{margin:0 0 8px;font-size:16px;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:16px;color:var(--muted);max-width:62ch}
+
+/* hub */
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.flow{grid-template-columns:1fr}}
+.step{display:flex;flex-direction:column;gap:10px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.step:hover{border-color:var(--accent);transform:translateY(-2px)}
+.step .no{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.step .name{font-size:18px;font-weight:900}
+.step .react{font-size:14px;color:var(--muted)}
+.step .react b{color:var(--ink);font-weight:500}
+.step .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:10px;border-top:1px dashed var(--line)}
+.step .go{color:var(--accent);font-weight:500}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:11px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;font-weight:700;color:var(--muted);background:var(--bg)}
+td.k{width:118px;font-weight:700;white-space:nowrap}
+.tag{font-family:var(--f-mono);font-size:13px;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:3px}
+
+/* chips */
+.chip{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;vertical-align:2px;margin-left:6px}
+.chip.src{background:var(--accent-soft);color:var(--accent)}
+.chip.draft{background:var(--draft-soft);color:var(--draft)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted)}
+
+/* guide view */
+.back{font-family:var(--f-mono);font-size:13px;text-decoration:none}
+.guide-head{display:grid;gap:10px}
+.guide-head h2{font-size:clamp(22px,4.5vw,28px);font-weight:900;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.fact b{font-weight:700;margin-right:6px;color:var(--muted)}
+.concept{padding:22px;background:var(--deep);color:var(--deep-fg);border-radius:6px}
+.concept .eyebrow{color:var(--deep-fg);opacity:.75}
+.concept q{display:block;margin-top:6px;font-size:clamp(18px,3.6vw,22px);font-weight:700;line-height:1.5;quotes:"“" "”"}
+.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.types{grid-template-columns:1fr}}
+.type{padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:6px;display:grid;gap:8px;align-content:start}
+.type .label{font-family:var(--f-display);font-weight:700;font-size:13px;color:var(--accent);letter-spacing:.04em}
+.type blockquote{margin:0;padding-left:12px;border-left:2px solid var(--line);color:var(--ink)}
+.type .hint{font-size:13px;color:var(--muted)}
+.check{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.check li{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start}
+.check li::before{content:"";width:14px;height:14px;margin-top:5px;border:1.5px solid var(--muted);border-radius:3px}
+.dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.dd{grid-template-columns:1fr}}
+.dd > div{padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.dd ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.dd .do h3{color:var(--accent)} .dd .dont h3{color:var(--draft)}
+.note{font-size:13px;color:var(--muted);padding:12px 14px;border:1px dashed var(--line);border-radius:6px}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- readability pass ---- */
+:root{--muted:#5c4757}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--muted:#c7b4c2}}
+:root[data-theme="dark"]{--muted:#c7b4c2}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-size:16px;line-height:1.75;letter-spacing:-.01em}
+h2{font-size:20px;letter-spacing:-.02em}
+h3{font-size:17px}
+table{font-size:15.5px}
+th,td{padding:14px 16px}
+td.k{color:var(--accent)}
+.step .react{font-size:15px}
+.step .name{font-size:20px}
+.type blockquote{font-size:16px;line-height:1.7}
+.type .hint,.fact,.legend,.note{font-size:14px}
+.dd ul{font-size:15.5px;gap:6px}
+.concept q{line-height:1.55}
+
+/* ---- mobile ---- */
+@media (max-width:640px){
+  body{font-size:16px}
+  .band .wrap{padding-block:22px 18px;flex-direction:column;align-items:flex-start;gap:6px}
+  .band .brand{font-size:30px}
+  .band h1{font-size:23px}
+  main .wrap{padding-block:22px 48px;gap:30px}
+  /* key/value tables → stacked cards */
+  .kv,.kv tbody,.kv tr,.kv td{display:block;width:100%}
+  .kv tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .kv tr:last-child{border-bottom:0}
+  .kv td{padding:0;border:0}
+  .kv td.k{width:auto;white-space:normal;font-size:13px;margin-bottom:4px;letter-spacing:.02em}
+  .tbl{overflow-x:visible}
+  /* direction table: 3 cols → stacked */
+  .dir thead{display:none}
+  .dir,.dir tbody,.dir tr,.dir td{display:block;width:100%}
+  .dir tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .dir tr:last-child{border-bottom:0}
+  .dir td{padding:0;border:0}
+  .dir td.k{width:auto;margin-bottom:2px}
+  .dir td:last-child{font-weight:700;margin-top:2px}
+  .concept{padding:20px 18px}
+  .step{padding:18px 16px}
+  .facts{display:grid;grid-template-columns:1fr;gap:6px}
+  .fact{padding:8px 12px}
+  .back,.pager a{display:inline-block;padding:8px 0;font-size:15px}
+  .pager{flex-direction:column-reverse;gap:4px}
+}
+
+/* ---- reference images ---- */
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.refs figure{margin:0;display:grid;gap:8px;align-content:start}
+.refs img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+.refs figcaption{font-size:14px;color:var(--muted);line-height:1.55}
+@media (max-width:420px){.refs{gap:8px}.refs figcaption{font-size:13px}}
+
+/* ---- 3-col guide tables + prose ---- */
+.g3 td.k{white-space:normal;width:170px}
+.prose{display:grid;gap:8px;max-width:64ch}
+.types.five{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+@media (max-width:640px){
+  .g3 thead{display:none}
+  .g3,.g3 tbody,.g3 tr,.g3 td{display:block;width:100%}
+  .g3 tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .g3 tr:last-child{border-bottom:0}
+  .g3 td{padding:0;border:0}
+  .g3 td.k{width:auto;margin-bottom:6px;font-size:15.5px}
+  .g3 td[data-label]{display:grid;grid-template-columns:64px 1fr;gap:8px}
+  .g3 td[data-label]+td[data-label]{margin-top:4px}
+  .g3 td[data-label]::before{content:attr(data-label);font-size:12.5px;font-weight:700;color:var(--muted);padding-top:2px}
+}
+
+/* ---- upload flow ---- */
+.flowlist{list-style:none;margin:0;padding:0;counter-reset:f;display:grid;gap:0;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.flowlist li{counter-increment:f;position:relative;display:grid;gap:4px;padding:16px 16px 16px 58px;border-bottom:1px solid var(--line)}
+.flowlist li:last-child{border-bottom:0}
+.flowlist li::before{content:counter(f);position:absolute;left:16px;top:15px;width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-fg);font-family:var(--f-display);font-weight:700;font-size:14px;display:grid;place-items:center}
+.flowlist b{font-size:16.5px}
+.flowlist li > span{color:var(--muted)}
+.flowlist a{font-weight:700}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px}
+.mail code{font-family:var(--f-mono);font-size:15px;padding:6px 10px;background:var(--accent-soft);color:var(--accent);border-radius:4px;user-select:all;word-break:break-all}
+.mail button{font:inherit;font-size:14px;font-weight:700;padding:6px 12px;border:1.5px solid var(--accent);border-radius:4px;background:transparent;color:var(--accent);cursor:pointer}
+
+/* ---- reward ---- */
+.reward{display:grid;gap:16px}
+.reward figure{margin:0;display:grid;gap:8px}
+.reward img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:#fff}
+.reward figcaption{font-size:14px;color:var(--muted)}
+.pouches{margin:0;padding:0;list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:640px){.pouches{grid-template-columns:1fr}}
+.pouches li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;column-gap:8px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:6px;font-size:14.5px;font-weight:500;line-height:1.5}
+.pouches li::before{content:counter(p,decimal-leading-zero);grid-row:span 2;font-family:var(--f-mono);font-size:12px;color:var(--accent);padding-top:2px}
+.pouches li span{font-size:13px;font-weight:400;color:var(--muted)}
+
+/* ---- lock ---- */
+.lock{min-height:60vh;display:grid;place-items:center}
+.lock form{width:100%;max-width:340px;display:grid;gap:12px;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-align:center}
+.lock h2{margin:0}
+.lock p{color:var(--muted);font-size:15px}
+.lock input{font:inherit;font-size:22px;letter-spacing:.4em;text-align:center;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.lock input:focus{outline:none;border-color:var(--accent)}
+.lock button{font:inherit;font-weight:700;font-size:16px;padding:13px;border:0;border-radius:8px;background:var(--deep);color:var(--deep-fg);cursor:pointer}
+.lock .err{color:#c0362c;font-size:14px;min-height:1.4em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lock .err{color:#ff8a80}}
+</style>
+</head>
+<body>
+
+
+<header class="band"><div class="wrap">
+  <div>
+    <div class="brand" role="img" aria-label="TEUMGYUL">TEUMGYUL</div>
+    <h1>틈결 오프라인 방문 가이드</h1>
+  </div>
+  <div class="meta">Fashion in Seoul · IconicMovement</div>
+</div></header>
+
+<main>
+<!-- ============ OFFLINE ============ -->
+<section id="v-offline"><div class="wrap">
+  <div class="guide-head">
+    <div class="eyebrow">02 · 오프라인 방문 콘텐츠</div>
+    <h2>오프라인 방문 가이드</h2>
+    <div class="facts">
+      <span class="fact"><b>방문</b>12/4–12/5</span>
+      <span class="fact"><b>업로드</b>12/5–12/6 이내</span>
+      <span class="fact"><b>목표 반응</b>“여기는 꼭 가봐야겠다.”</span>
+    </div>
+  </div>
+
+  <div>
+    <h2>콘텐츠 목적</h2>
+    <p>틈결 플래그십 방문 욕구 형성 및 실제 방문·구매 유도</p>
+  </div>
+
+  <div class="concept">
+    <div class="eyebrow">콘텐츠 콘셉트</div>
+    <q>성수에서 쇼핑하러 갔다가 놀고, 체험하고, 새로운 취향까지 발견한 곳.</q>
+  </div>
+  <p class="lede">틈결은 단순히 상품을 구매하는 편집숍이 아닙니다. 틈결에서만 만날 수 있는 상품부터 직접 참여하는 체험, 매주 달라지는 패션 팝업까지 다양한 즐길거리를 소개해 주세요.</p>
+
+  <div>
+    <h2>필수 콘텐츠 구성</h2>
+    <div class="tbl"><table class="g3">
+      <thead><tr><th>구분</th><th>필수 촬영 내용</th><th>전달할 메시지</th></tr></thead>
+      <tbody>
+        <tr><td class="k">오리지널 상품</td><td data-label="촬영">ON-BAG POUCH 및 틈결 자체 상품</td><td data-label="메시지">다른 곳에서 만나기 어려운 디자인</td></tr>
+        <tr><td class="k">글로벌 IP 상품</td><td data-label="촬영">틈결 단독·선발매 상품 중심</td><td data-label="메시지">틈결에 방문해야 발견할 수 있는 상품</td></tr>
+        <tr><td class="k">DIY 프로모션</td><td data-label="촬영">직접 참여하고 완성하는 과정</td><td data-label="메시지">상품을 구매하는 것 이상의 즐거움</td></tr>
+        <tr><td class="k">2층 패션 팝업</td><td data-label="촬영">방문 주차의 패션 브랜드 및 구매 혜택</td><td data-label="메시지">매주 새로운 브랜드를 만날 수 있는 공간</td></tr>
+        <tr><td class="k">3층 체험존</td><td data-label="촬영">직접 체험하고 사진을 촬영하는 모습</td><td data-label="메시지">쇼핑과 함께 즐기는 이색적인 공간</td></tr>
+        <tr><td class="k">방문 안내</td><td data-label="촬영">위치·운영시간·진행 중인 혜택</td><td data-label="메시지">지금 방문해야 하는 이유</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div>
+    <h2>체크리스트</h2>
+    <ul class="check">
+      <li>오리지널 상품 (ON-BAG POUCH)</li>
+      <li>글로벌 IP 단독·선발매 상품</li>
+      <li>DIY 프로모션 참여 과정</li>
+      <li>2층 패션 팝업 브랜드와 혜택</li>
+      <li>3층 체험존 체험·촬영 모습</li>
+      <li>위치·운영시간·진행 중인 혜택 안내</li>
+      <li>필수 태그 <span class="tag">@teumgyul_official</span></li>
+    </ul>
+  </div>
+
+  <div>
+    <h2>모든 콘텐츠 공통</h2>
+    <div class="tbl"><table class="kv"><tbody>
+      <tr><td class="k">필수 태그</td><td><span class="tag">@teumgyul_official</span></td></tr>
+      <tr><td class="k">광고 표기</td><td>브랜드와 협업한 콘텐츠이므로 캡션 첫 줄 또는 영상 안에 ‘유료광고 포함’ 등 광고임을 알 수 있게 표기해 주세요.</td></tr>
+      <tr><td class="k">프로젝트명</td><td>Fashion in Seoul (틈결). 표기는 이 이름으로 통일해 주세요.</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div>
+    <h2>리워드 안내</h2>
+    <p style="margin-bottom:14px">틈결 신규 ON-BAG POUCH 제품 7종을 리워드로 드려요.</p>
+    <div class="reward">
+      <figure>
+        <img src="/images/reward-pouch-lineup.png" alt="신규 파우치 7종 라인업" width="1024" height="786" loading="lazy">
+        <figcaption>신규 파우치 7종 라인업</figcaption>
+      </figure>
+      <ol class="pouches">
+        <li>Preppy Shirt On-Bag Pouch &amp; Scrunchie Set <span>프레피 셔츠 파우치 &amp; 스크런치 세트</span></li>
+        <li>Kitsch Cap On-Bag Pouch &amp; Scrunchie Set <span>키치 캡 파우치 &amp; 스크런치 세트</span></li>
+        <li>Black Meow Beanie On-Bag Pouch <span>블랙 미야오 비니 파우치</span></li>
+        <li>Pink Meow Beanie On-Bag Pouch <span>핑크 미야오 비니 파우치</span></li>
+        <li>Bambi Meow Beanie On-Bag Pouch <span>밤비 미야오 비니 파우치</span></li>
+        <li>Denim Belt 2way Pouch <span>데님 벨트 파우치</span></li>
+        <li>Balloon Skirt 2way Pouch <span>벌룬 스커트 파우치</span></li>
+      </ol>
+      <figure>
+        <img src="/images/reward-design-concept.webp" alt="ON-BAG POUCH 디자인 콘셉트와 디자인 프로세스 지면" loading="lazy">
+        <figcaption>ON-BAG POUCH 디자인 콘셉트 · 파우치에 패션 디테일을 입힌 오리지널 컬렉션</figcaption>
+      </figure>
+    </div>
+  </div>
+
+</div></section>
+
+</main>
+<script>
+(function(){
+  var cb=document.getElementById("copyMail"); if(!cb) return;
+  cb.addEventListener("click",function(){
+    var el=document.getElementById("mailAddr"), addr=el.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent="선택됨 · 복사하세요"}
+    try{navigator.clipboard.writeText(addr).then(function(){cb.textContent="복사됨";setTimeout(function(){cb.textContent="주소 복사"},1500)},sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body>
+</html>
