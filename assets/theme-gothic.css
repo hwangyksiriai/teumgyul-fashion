@@ -1,0 +1,30 @@
+/* Theme: gothic lolita (offline visit + micro pages) — loaded after kitsch.css
+   From the candle-and-bats illustration: dusk plum, ribbon black, rose-milk pink. */
+:root,
+:root[data-theme="dark"]{
+  --bg:#f4eff6; --ink:#231a28; --muted:#6a5a72; --line:#e2d5e8;
+  --accent:#8a4c7d; --accent-soft:#f3e3ef; --cherry:#231a28; --butter:#f7e6ef;
+  --logo:#f4c4dc; --masthead:#4a3e52; --divider:#cbb3d6; --band-fg:#f8eef4;
+  --stk:4px 4px 0 var(--divider);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#f4eff6; --ink:#231a28; --muted:#6a5a72; --line:#e2d5e8;
+  --accent:#8a4c7d; --accent-soft:#f3e3ef; --logo:#f4c4dc; --masthead:#4a3e52; --divider:#cbb3d6; --band-fg:#f8eef4}}
+
+.band{
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 12px, transparent 12px 24px);
+}
+.band .brand{color:var(--logo);text-shadow:3px 3px 0 #231a28}
+.band h1{color:var(--band-fg)}
+.band .meta{color:#f4c4dc;border-top-color:rgba(255,255,255,.25)}
+.band .wrap::after{background-image:url("/images/banner-gothic.png");box-shadow:5px 5px 0 #231a28, 0 6px 18px rgba(0,0,0,.3)}
+
+h2{box-shadow:3px 3px 0 #231a28}
+h2::before{content:"\2020"}            /* dagger, candle-gothic mood */
+.concept{box-shadow:6px 6px 0 var(--accent)}
+.concept q::before{content:"\2726";color:var(--accent)}
+.step .no,.eyebrow{background:var(--butter)}
+.lock button,.submit-btn,.done-btn{background:#231a28;color:#f8eef4}
+.flowlist li::before{box-shadow:2px 2px 0 #231a28}

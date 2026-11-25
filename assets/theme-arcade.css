@@ -1,0 +1,19 @@
+/* Theme: arcade bedroom (seeding) — loaded after kitsch.css
+   From the game-room illustration: sky blue, bubblegum pink, cream, pixel sparkle. */
+:root,
+:root[data-theme="dark"]{
+  --bg:#eef7ff; --ink:#1c2a4a; --muted:#56698c; --line:#cfe4fa;
+  --accent:#2f7fd6; --accent-soft:#e1efff; --cherry:#f07db1; --butter:#fff3c4;
+  --logo:#f06aa8; --masthead:#bfe0ff; --divider:#9ecaf4; --band-fg:#1c2a4a;
+  --stk:4px 4px 0 var(--divider);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#eef7ff; --ink:#1c2a4a; --muted:#56698c; --line:#cfe4fa;
+  --accent:#2f7fd6; --accent-soft:#e1efff; --logo:#f06aa8; --masthead:#bfe0ff; --divider:#9ecaf4; --band-fg:#1c2a4a}}
+
+.band .wrap::after{background-image:url("/images/banner-arcade.png");box-shadow:5px 5px 0 var(--cherry), 0 6px 18px rgba(47,127,214,.25)}
+h2::before{content:"\2726"}            /* sparkle */
+.concept q::before{content:"\2665";color:var(--cherry)}
+.type .label{color:var(--cherry)}
+.pouches li::before{color:var(--cherry)}
+.overview .ov-fee dd{color:var(--cherry)}
