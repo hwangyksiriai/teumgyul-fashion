@@ -143,6 +143,25 @@ td.k{color:var(--ink);font-weight:700}
 .done-modal{background:rgba(15,13,14,.55)}
 
 
+/* ---------- campaign overview ---------- */
+.overview{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.overview > div{display:grid;gap:4px;align-content:start;padding:18px 16px 18px 0;border-bottom:1px solid var(--line)}
+.overview dt{font-size:11.5px;font-weight:500;letter-spacing:.16em;color:var(--muted)}
+.overview dd{margin:0;font-size:16.5px;font-weight:500;letter-spacing:-.03em;line-height:1.5}
+.overview .ov-fee{grid-column:1/-1;padding-block:22px}
+.overview .ov-fee dd{font-family:var(--f-serif);font-weight:400;font-size:clamp(40px,9vw,58px);line-height:1;letter-spacing:-.02em;color:var(--accent)}
+.overview .ov-wide{grid-column:1/-1}
+@media (max-width:640px){.overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- mood board ---------- */
+.mood{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mood figure{margin:0;overflow:hidden;background:var(--surface)}
+.mood img{display:block;width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mood figure:hover img{transform:scale(1.03)}
+.mood .m-wide{grid-column:1/-1}
+.mood .m-wide img{aspect-ratio:auto;height:auto}
+@media (max-width:640px){.mood{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}}
+
 @media (max-width:640px){
   .band .wrap{padding-block:26px 22px;gap:16px}
   main .wrap{padding-block:32px 72px;gap:52px}
