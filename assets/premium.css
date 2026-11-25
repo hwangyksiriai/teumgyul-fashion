@@ -167,6 +167,27 @@ td.k{color:var(--ink);font-weight:700}
 .mood .m-wide img{aspect-ratio:auto;height:auto}
 @media (max-width:640px){.mood{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}}
 
+/* ---------- clear section separation ---------- */
+main .wrap{gap:0}
+main .wrap > *{padding-block:44px}
+main .wrap > *:first-child{padding-top:8px}
+main .wrap > * + *{border-top:6px solid var(--masthead)}
+main .wrap > .concept{border-bottom:0;padding-block:44px}
+main .wrap > .concept + *{border-top:6px solid var(--masthead)}
+main .wrap > .purpose{border-left:0;padding-left:0}
+main .wrap > .purpose .purpose-label::before{content:"";display:inline-block;width:4px;height:12px;margin-right:8px;background:var(--accent);vertical-align:-1px}
+h2{font-size:23px;margin-bottom:24px}
+h2::after{content:none}
+h2::before{content:"";width:4px;height:22px;background:var(--accent);flex:none}
+.guide-head h2::before,.lock h2::before{content:none}
+.pager{border-top:0}
+
+@media (max-width:640px){
+  main .wrap > *{padding-block:36px}
+  main .wrap > *:first-child{padding-top:4px}
+  h2{font-size:21px}
+}
+
 @media (max-width:640px){
   .band .wrap{padding-block:26px 22px;gap:16px}
   main .wrap{padding-block:32px 72px;gap:52px}
