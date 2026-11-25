@@ -194,6 +194,13 @@ td.k{color:var(--accent)}
 .pouches li::before{content:counter(p,decimal-leading-zero);grid-row:span 2;font-family:var(--f-mono);font-size:12px;color:var(--accent);padding-top:2px}
 .pouches li span{font-size:13px;font-weight:400;color:var(--muted)}
 
+/* ---- upload due banner ---- */
+.due{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;padding:16px 20px;background:var(--deep);color:var(--deep-fg);border-radius:8px}
+.due-item{display:grid;gap:2px}
+.due-label{font-size:14px;font-weight:700;letter-spacing:.04em;opacity:.85}
+.due-date{font-family:var(--f-display);font-size:clamp(26px,6vw,34px);font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.due-date small{font-family:var(--f-body);font-size:16px;font-weight:700;margin-left:6px}
+
 /* ---- lock ---- */
 .lock{min-height:60vh;display:grid;place-items:center}
 .lock form{width:100%;max-width:340px;display:grid;gap:12px;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-align:center}
@@ -223,10 +230,11 @@ td.k{color:var(--accent)}
   <div class="guide-head">
     <div class="eyebrow">02 · 오프라인 방문 콘텐츠</div>
     <h2>오프라인 방문 가이드</h2>
-    <div class="facts">
-      <span class="fact"><b>방문</b>12/4–12/5</span>
-      <span class="fact"><b>업로드</b>12/5–12/6 이내</span>
-      <span class="fact"><b>목표 반응</b>“여기는 꼭 가봐야겠다.”</span>
+    <div class="due">
+      <div class="due-item"><span class="due-label">방문 일정</span><span class="due-date">12/4 – 12/5</span></div>
+      <div class="due-item"><span class="due-label">업로드 일정</span><span class="due-date">12/5 – 12/6 <small>이내 업로드</small></span></div>
+    </div>
+    <div class="facts">      <span class="fact"><b>목표 반응</b>“여기는 꼭 가봐야겠다.”</span>
     </div>
   </div>
 
