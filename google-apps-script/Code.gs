@@ -23,7 +23,7 @@ const COLUMNS = [
   { key: 'phone',        label: '휴대폰',            width: 130, text: true },
   { key: 'email',        label: '이메일',            width: 190 },
   { key: 'agreeVisit',   label: '12/4–5 방문 가능',  width: 120 },
-  { key: 'agreeUpload',  label: '12/6까지 업로드',   width: 120 },
+  { key: 'agreeUpload',  label: '12/6–7 업로드',   width: 120 },
   { key: 'agreeSeongsu', label: '성수 방문 가능',    width: 110 },
   { key: 'agreeNoShow',  label: '노쇼 불가 동의',    width: 110 }
 ];

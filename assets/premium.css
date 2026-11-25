@@ -151,7 +151,11 @@ td.k{color:var(--ink);font-weight:700}
 .overview .ov-fee{grid-column:1/-1}
 .overview .ov-fee dd{font-weight:700;font-size:20px;color:var(--accent)}
 .overview .ov-wide{grid-column:1/-1}
-@media (max-width:640px){.overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* vertical list: label | value per row */
+.overview{grid-template-columns:1fr}
+.overview > div{grid-template-columns:140px 1fr;gap:16px;align-items:baseline;padding:15px 0}
+.overview dt{font-size:12.5px;letter-spacing:.1em}
+@media (max-width:640px){.overview > div{grid-template-columns:104px 1fr;gap:12px}}
 
 /* ---------- mood board ---------- */
 .mood{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
