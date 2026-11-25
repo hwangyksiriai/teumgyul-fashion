@@ -156,6 +156,17 @@ td.k{color:var(--accent)}
 .refs figcaption{font-size:14px;color:var(--muted);line-height:1.55}
 @media (max-width:420px){.refs{gap:8px}.refs figcaption{font-size:13px}}
 
+/* ---- reward ---- */
+.reward{display:grid;gap:16px}
+.reward figure{margin:0;display:grid;gap:8px}
+.reward img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:#fff}
+.reward figcaption{font-size:14px;color:var(--muted)}
+.pouches{margin:0;padding:0;list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:640px){.pouches{grid-template-columns:1fr}}
+.pouches li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;column-gap:8px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:6px;font-size:14.5px;font-weight:500;line-height:1.5}
+.pouches li::before{content:counter(p,decimal-leading-zero);grid-row:span 2;font-family:var(--f-mono);font-size:12px;color:var(--accent);padding-top:2px}
+.pouches li span{font-size:13px;font-weight:400;color:var(--muted)}
+
 /* ---- lock ---- */
 .lock{min-height:60vh;display:grid;place-items:center}
 .lock form{width:100%;max-width:340px;display:grid;gap:12px;padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-align:center}
@@ -240,6 +251,30 @@ td.k{color:var(--accent)}
     </tbody></table></div>
   </div>
 
+  <div>
+    <h2>리워드 안내</h2>
+    <p style="margin-bottom:14px">틈결 신규 ON-BAG POUCH 제품 7종을 리워드로 드려요.</p>
+    <div class="reward">
+      <figure>
+        <img src="images/reward-pouch-lineup.png" alt="신규 파우치 7종 라인업" width="1024" height="786" loading="lazy">
+        <figcaption>신규 파우치 7종 라인업</figcaption>
+      </figure>
+      <ol class="pouches">
+        <li>Preppy Shirt On-Bag Pouch &amp; Scrunchie Set <span>프레피 셔츠 파우치 &amp; 스크런치 세트</span></li>
+        <li>Kitsch Cap On-Bag Pouch &amp; Scrunchie Set <span>키치 캡 파우치 &amp; 스크런치 세트</span></li>
+        <li>Black Meow Beanie On-Bag Pouch <span>블랙 미야오 비니 파우치</span></li>
+        <li>Pink Meow Beanie On-Bag Pouch <span>핑크 미야오 비니 파우치</span></li>
+        <li>Bambi Meow Beanie On-Bag Pouch <span>밤비 미야오 비니 파우치</span></li>
+        <li>Denim Belt 2way Pouch <span>데님 벨트 파우치</span></li>
+        <li>Balloon Skirt 2way Pouch <span>벌룬 스커트 파우치</span></li>
+      </ol>
+      <figure>
+        <img src="images/reward-design-concept.webp" alt="ON-BAG POUCH 디자인 콘셉트와 디자인 프로세스 지면" loading="lazy">
+        <figcaption>ON-BAG POUCH 디자인 콘셉트 · 파우치에 패션 디테일을 입힌 오리지널 컬렉션</figcaption>
+      </figure>
+    </div>
+  </div>
+
   <div class="legend">
     <span><span class="chip src" style="margin:0 6px 0 0">원본</span>노션 원본 가이드에 있는 내용</span>
     <span><span class="chip draft" style="margin:0 6px 0 0">초안</span>원본에 없어 새로 작성한 내용, 브랜드 확인 필요</span>
@@ -276,7 +311,7 @@ td.k{color:var(--accent)}
         <figcaption>‘곧 공개’ 메시지를 정면으로 보여주는 티징 컷</figcaption>
       </figure>
     </div>
-    <p class="note" style="margin-top:12px">참고용 무드 이미지예요. 그대로 따라 하기보다 분위기와 연출 방식을 참고해 주세요.</p>
+    <p class="note" style="margin-top:12px">레퍼런스 이미지처럼 보내드린 틈결 매거진을 활용해서 자유롭게 콘텐츠를 제작해 주세요.</p>
   </div>
 
   <div>
