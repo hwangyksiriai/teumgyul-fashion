@@ -44,11 +44,11 @@ h3{letter-spacing:-.02em}
 /* ---------- guide head & schedule ---------- */
 .guide-head{gap:18px}
 .guide-head h2{font-size:clamp(28px,6vw,40px);font-weight:700;letter-spacing:-.045em;line-height:1.15}
-.due{background:var(--deep);color:var(--deep-fg);border-radius:var(--r);padding:26px 26px 24px;gap:18px 44px;align-items:flex-end}
-.due-item{gap:6px}
-.due-label{font-size:12px;font-weight:500;letter-spacing:.18em;opacity:.7}
-.due-date{font-family:var(--f-serif);font-weight:400;font-size:clamp(38px,9vw,56px);line-height:1;letter-spacing:-.02em}
-.due-date small{display:block;font-family:var(--f-body);font-size:14px;font-weight:500;letter-spacing:.04em;margin:10px 0 0;opacity:.8}
+.due{background:none;color:var(--ink);border-radius:0;padding:16px 0;gap:12px 40px;align-items:flex-start;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.due-item{gap:4px}
+.due-label{font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--muted);opacity:1}
+.due-date{font-family:var(--f-body);font-weight:700;font-size:20px;line-height:1.35;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.due-date small{display:inline;font-family:var(--f-body);font-size:15px;font-weight:500;letter-spacing:0;margin:0 0 0 6px;opacity:1;color:var(--muted)}
 .facts{gap:6px 24px}
 .fact{border:0;background:none;padding:0;font-size:15px;border-radius:0}
 .fact b{font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--muted);margin-right:10px}
@@ -148,10 +148,9 @@ td.k{color:var(--ink);font-weight:700}
 .overview > div{display:grid;gap:4px;align-content:start;padding:18px 16px 18px 0;border-bottom:1px solid var(--line)}
 .overview dt{font-size:11.5px;font-weight:500;letter-spacing:.16em;color:var(--muted)}
 .overview dd{margin:0;font-size:16.5px;font-weight:500;letter-spacing:-.03em;line-height:1.5}
-.overview .ov-fee{grid-column:1/-1;padding-block:22px}
-.overview .ov-fee dd{font-family:var(--f-serif);font-weight:400;font-size:clamp(40px,9vw,58px);line-height:1;letter-spacing:-.02em;color:var(--accent)}
+.overview .ov-fee{grid-column:1/-1}
+.overview .ov-fee dd{font-weight:700;font-size:20px;color:var(--accent)}
 .overview .ov-wide{grid-column:1/-1}
-.overview .ov-fee dd{padding-left:3px}
 @media (max-width:640px){.overview{grid-template-columns:repeat(2,minmax(0,1fr))}.overview > div:nth-last-child(2){grid-column:1/-1}}
 
 /* ---------- mood board ---------- */
