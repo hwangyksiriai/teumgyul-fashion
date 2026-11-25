@@ -1,0 +1,172 @@
+/* TEUMGYUL — kitsch layer (loaded after premium.css)
+   Concept: Y2K sticker scrapbook. Polka-dot paper, chunky rounded cards with
+   offset "sticker" shadows, hot pink + cherry red + lavender, round Jua type,
+   tilted polaroid mood photos. Committed light look in every theme. */
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700;900&display=swap");
+
+:root,
+:root[data-theme="dark"]{
+  --bg:#fff6fb; --surface:#ffffff; --ink:#3a1530; --muted:#8a5b7c; --line:#f6cfe6;
+  --accent:#e0489c; --accent-soft:#ffe3f2; --cherry:#e8424f; --lilac:#cdb8f5; --butter:#fff1a8;
+  --logo:#e0489c; --masthead:#ffd6ec; --divider:#f7b6da;
+  --deep:#e0489c; --deep-fg:#ffffff; --band:#ffd6ec; --band-fg:#3a1530;
+  --f-cute:"Jua","Noto Sans KR",system-ui,sans-serif;
+  --f-body:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --r:18px; --stk:4px 4px 0 var(--divider);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#fff6fb; --surface:#ffffff; --ink:#3a1530; --muted:#8a5b7c; --line:#f6cfe6;
+  --accent:#e0489c; --accent-soft:#ffe3f2; --logo:#e0489c; --masthead:#ffd6ec; --divider:#f7b6da;
+  --deep:#e0489c; --deep-fg:#ffffff; --band:#ffd6ec; --band-fg:#3a1530; color-scheme:light}}
+
+body{
+  background-color:var(--bg);
+  background-image:radial-gradient(var(--line) 1.6px, transparent 1.7px);
+  background-size:22px 22px;
+  color:var(--ink);
+}
+
+/* ---------- masthead: gingham band + scalloped edge ---------- */
+.band{
+  position:relative;
+  background-color:var(--masthead);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.45) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.45) 0 12px, transparent 12px 24px);
+  border-bottom:0;
+}
+.band::after{
+  content:""; position:absolute; left:0; right:0; bottom:-11px; height:12px;
+  background:radial-gradient(circle at 12px 0, var(--masthead) 11px, transparent 12px) 0 0/24px 12px repeat-x;
+}
+.band .wrap{padding-block:36px 34px}
+.band .brand{font-size:clamp(30px,6.4vw,42px);color:var(--accent);text-shadow:3px 3px 0 #fff}
+.band h1{font-family:var(--f-cute);font-weight:400;letter-spacing:-.01em;font-size:clamp(30px,6.6vw,48px);color:var(--ink)}
+.band .meta{font-family:var(--f-cute);font-style:normal;font-size:15px;color:var(--accent);border-top:2px dashed #fff;padding-top:12px}
+
+/* ---------- sections ---------- */
+main .wrap{padding-block:40px 90px}
+main .wrap > *{padding-block:34px}
+main .wrap > * + *{border-top:3px dotted var(--divider)}
+main .wrap > .concept + *{border-top:3px dotted var(--divider)}
+
+h2{font-family:var(--f-cute);font-weight:400;font-size:21px;letter-spacing:0;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:#fff;padding:7px 18px 6px;border-radius:999px;
+  box-shadow:3px 3px 0 var(--cherry);transform:rotate(-1.2deg);margin-bottom:22px}
+h2::before{content:"\2665";width:auto;height:auto;background:none;font-size:15px;color:#fff}
+h2::after{content:none}
+.guide-head h2,.lock h2{background:none;color:var(--ink);box-shadow:none;padding:0;transform:none;display:block;
+  font-size:clamp(30px,6.4vw,42px);line-height:1.2}
+.guide-head h2::before,.lock h2::before{content:none}
+h3{font-family:var(--f-cute);font-weight:400;letter-spacing:0}
+
+.eyebrow{display:inline-block;align-self:start;justify-self:start;font-family:var(--f-cute);font-weight:400;letter-spacing:.02em;
+  font-size:14px;color:var(--ink);background:var(--butter);padding:4px 12px;border-radius:999px;border:2px solid var(--ink)}
+.guide-head{gap:14px;justify-items:start}
+
+.fact{background:#fff;border:2px solid var(--line);border-radius:999px;padding:6px 14px}
+.fact b{font-family:var(--f-cute);font-weight:400;letter-spacing:0;color:var(--accent)}
+
+.note{border:2px dashed var(--accent);border-left-width:2px;border-radius:14px;background:#fff;padding:10px 14px;color:var(--ink);font-weight:500}
+.note strong{border-bottom:0!important;background:var(--butter)!important;padding:0 4px!important;color:var(--ink)!important}
+
+/* ---------- concept: speech bubble ---------- */
+.concept{background:#fff;border:2.5px solid var(--ink);border-radius:26px;padding:30px 24px 28px!important;
+  box-shadow:6px 6px 0 var(--accent);position:relative;margin:34px 0}
+.concept::after{content:"";position:absolute;left:38px;bottom:-16px;width:26px;height:26px;background:#fff;
+  border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg) skew(8deg,8deg)}
+.concept .eyebrow{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.concept q{font-family:var(--f-cute);font-weight:400;letter-spacing:-.01em;line-height:1.5}
+.concept q::before{content:"\2661";font-family:var(--f-cute);font-size:34px;line-height:1;color:var(--cherry);margin-bottom:6px}
+.concept-body{border-top:2px dashed var(--line);color:var(--muted)}
+
+.purpose{background:var(--accent-soft);border:0;border-radius:var(--r);padding:16px 20px!important}
+.purpose-label{font-family:var(--f-cute);color:var(--accent);letter-spacing:.02em}
+.purpose-label::before{background:var(--accent)!important;border-radius:2px}
+.purpose p{font-family:var(--f-cute);font-weight:400}
+
+/* ---------- sticker cards ---------- */
+.items,.types,.flow{background:none;border:0;gap:16px}
+.item,.type,.step{background:#fff;border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--stk)}
+.item h3{color:var(--accent);font-size:20px}
+.item dt,.overview dt{font-family:var(--f-cute);font-weight:400;letter-spacing:.02em;color:var(--accent)}
+.item dd + dt{border-top:2px dashed var(--line);padding-top:10px}
+.type .label{font-family:var(--f-cute);font-style:normal;color:var(--cherry);font-size:18px}
+.type blockquote{font-weight:500}
+.type:nth-child(odd){transform:rotate(-.6deg)} .type:nth-child(even){transform:rotate(.6deg)}
+
+.step{padding:24px 22px 18px;transition:transform .2s, box-shadow .2s}
+.step:hover{transform:translate(-2px,-2px) rotate(-.4deg);box-shadow:7px 7px 0 var(--accent);background:#fff}
+.step .no{font-family:var(--f-cute);font-style:normal;color:var(--ink);background:var(--butter);padding:3px 10px;border-radius:999px;justify-self:start;align-self:start;display:inline-block}
+.step .name{font-family:var(--f-cute);font-weight:400;font-size:26px;letter-spacing:0}
+.step .name .sub{font-family:var(--f-cute);color:var(--cherry)}
+.step .foot{border-top:2px dashed var(--line)}
+.step .go{color:var(--accent);font-family:var(--f-cute)}
+.folder-list{border-top:2px dashed var(--line)}
+.folder-list a{border-bottom:2px dashed var(--line);border-radius:10px}
+.folder-list a:hover{background:var(--accent-soft)}
+
+/* ---------- overview: ticket ---------- */
+.overview{background:#fff;border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--stk);padding:6px 20px}
+.overview > div{border-bottom:2px dashed var(--line);padding:14px 0}
+.overview > div:last-child{border-bottom:0}
+.overview dd{font-weight:700}
+.overview .ov-fee dd{font-family:var(--f-cute);font-weight:400;font-size:24px;color:var(--cherry)}
+
+/* ---------- tables ---------- */
+.tbl{background:#fff;border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--stk);overflow:hidden}
+th{font-family:var(--f-cute);font-weight:400;letter-spacing:.02em;color:var(--accent);background:var(--accent-soft)}
+th,td{border-bottom:2px dashed var(--line)}
+td.k{font-family:var(--f-cute);font-weight:400;color:var(--accent)}
+
+/* ---------- photos: polaroids ---------- */
+.mood{gap:14px}
+.mood figure,.refs figure{background:#fff;padding:8px 8px 22px;border-radius:4px;box-shadow:0 3px 10px rgba(224,72,156,.18);overflow:visible}
+.mood figure:nth-child(3n+1){transform:rotate(-2deg)}
+.mood figure:nth-child(3n+2){transform:rotate(1.5deg)}
+.mood figure:nth-child(3n){transform:rotate(-.8deg)}
+.mood .m-wide{transform:rotate(.4deg)!important}
+.mood figure:hover img{transform:none}
+.refs figure:first-child{transform:rotate(-2deg)} .refs figure:last-child{transform:rotate(2deg)}
+.refs img,.mood img{border-radius:2px}
+.reward img{border-radius:var(--r);border:2.5px solid var(--ink);box-shadow:var(--stk);background:#fff}
+
+/* ---------- lists ---------- */
+.pouches{border-top:0;gap:10px}
+.pouches li{background:#fff;border:2px solid var(--line);border-radius:999px;padding:10px 16px}
+.pouches li::before{font-family:var(--f-cute);font-style:normal;color:var(--cherry)}
+.flowlist{border-top:0}
+.flowlist li{border-bottom:2px dashed var(--line)}
+.flowlist li::before{font-family:var(--f-cute);font-style:normal;color:#fff;background:var(--accent);width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;font-size:18px;top:20px;box-shadow:2px 2px 0 var(--cherry)}
+.tag,.mail code{background:var(--accent-soft);border:2px solid var(--accent);color:var(--accent);border-radius:999px}
+.mail button{border:2px solid var(--ink);border-radius:999px;box-shadow:2px 2px 0 var(--accent);color:var(--ink);background:#fff}
+.mail button:hover{background:var(--butter);color:var(--ink)}
+
+/* ---------- forms & buttons ---------- */
+.apply{background:#fff;border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--stk);padding:24px 20px}
+.fg label{font-family:var(--f-cute);font-weight:400;letter-spacing:.02em}
+.fg input{border:2px solid var(--line);border-radius:12px;background:var(--bg);padding:12px 14px}
+.fg input:focus{border-color:var(--accent)}
+.agree-list{background:var(--accent-soft);border-radius:14px}
+.agree-row input{accent-color:var(--accent)}
+.agree-row strong{color:var(--accent);font-family:var(--f-cute);font-weight:400}
+.lock form{background:#fff;border:2.5px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--accent);padding:30px 22px}
+.lock input{border-radius:14px}
+.lock button,.submit-btn,.done-btn{border-radius:999px;background:var(--accent);color:#fff;font-family:var(--f-cute);font-weight:400;
+  font-size:18px;letter-spacing:.02em;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.lock button:hover,.submit-btn:hover,.done-btn:hover{opacity:1;transform:translate(1px,1px);box-shadow:3px 3px 0 var(--ink)}
+.done-card{border:2.5px solid var(--ink);border-radius:24px;box-shadow:6px 6px 0 var(--accent)}
+.done-title{font-family:var(--f-cute);font-weight:400}
+
+@media (max-width:640px){
+  .item,.type,.step{border-bottom:2.5px solid var(--ink)}
+  .step{padding:22px 18px 16px}
+  .item,.type{padding:20px 18px}
+  .items,.types,.flow{gap:14px}
+  .overview{padding:4px 16px}
+  h2{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){.step,.step:hover{transition:none;transform:none}}
