@@ -38,7 +38,7 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .guide-head h2::after,.lock h2::after{content:none}
 h3{letter-spacing:-.02em}
 
-.eyebrow{font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:16px;letter-spacing:0;text-transform:none;color:var(--accent)}
+.eyebrow{font-family:var(--f-body);font-style:normal;font-weight:500;font-size:12.5px;letter-spacing:.16em;text-transform:none;color:var(--accent)}
 .lede{font-size:16.5px;line-height:1.9;color:var(--muted);font-weight:300}
 
 /* ---------- guide head & schedule ---------- */
@@ -48,7 +48,7 @@ h3{letter-spacing:-.02em}
 .due-item{gap:6px}
 .due-label{font-size:12px;font-weight:500;letter-spacing:.18em;opacity:.7}
 .due-date{font-family:var(--f-serif);font-weight:400;font-size:clamp(38px,9vw,56px);line-height:1;letter-spacing:-.02em}
-.due-date small{font-family:var(--f-body);font-size:15px;font-weight:500;letter-spacing:0;margin-left:10px;opacity:.85}
+.due-date small{display:block;font-family:var(--f-body);font-size:14px;font-weight:500;letter-spacing:.04em;margin:10px 0 0;opacity:.8}
 .facts{gap:6px 24px}
 .fact{border:0;background:none;padding:0;font-size:15px;border-radius:0}
 .fact b{font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--muted);margin-right:10px}
@@ -142,14 +142,6 @@ td.k{color:var(--ink);font-weight:700}
 .done-card{border-radius:var(--r)}
 .done-modal{background:rgba(15,13,14,.55)}
 
-/* ---------- motion ---------- */
-@media (prefers-reduced-motion:no-preference){
-  main .wrap > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-  main .wrap > *:nth-child(2){animation-delay:.06s}
-  main .wrap > *:nth-child(3){animation-delay:.12s}
-  main .wrap > *:nth-child(4){animation-delay:.18s}
-  @keyframes rise{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
-}
 
 @media (max-width:640px){
   .band .wrap{padding-block:26px 22px;gap:16px}
