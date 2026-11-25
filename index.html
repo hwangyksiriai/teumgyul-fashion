@@ -156,6 +156,22 @@ td.k{color:var(--accent)}
 .refs figcaption{font-size:14px;color:var(--muted);line-height:1.55}
 @media (max-width:420px){.refs{gap:8px}.refs figcaption{font-size:13px}}
 
+/* ---- 3-col guide tables + prose ---- */
+.g3 td.k{white-space:normal;width:170px}
+.prose{display:grid;gap:8px;max-width:64ch}
+.types.five{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+@media (max-width:640px){
+  .g3 thead{display:none}
+  .g3,.g3 tbody,.g3 tr,.g3 td{display:block;width:100%}
+  .g3 tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .g3 tr:last-child{border-bottom:0}
+  .g3 td{padding:0;border:0}
+  .g3 td.k{width:auto;margin-bottom:6px;font-size:15.5px}
+  .g3 td[data-label]{display:grid;grid-template-columns:64px 1fr;gap:8px}
+  .g3 td[data-label]+td[data-label]{margin-top:4px}
+  .g3 td[data-label]::before{content:attr(data-label);font-size:12.5px;font-weight:700;color:var(--muted);padding-top:2px}
+}
+
 /* ---- reward ---- */
 .reward{display:grid;gap:16px}
 .reward figure{margin:0;display:grid;gap:8px}
@@ -217,16 +233,16 @@ td.k{color:var(--accent)}
       <span class="foot"><span>~15초</span><span class="go">가이드 열기 →</span></span>
     </a>
     <a class="step" href="#offline">
-      <span class="no">02 · 12/4 오픈 이후</span>
+      <span class="no">02 · 12/4–12/6</span>
       <span class="name">오프라인 방문</span>
       <span class="react">성수에서 즐기는 새로운 쇼핑 경험<br><b>“여기는 꼭 가봐야겠다.”</b></span>
-      <span class="foot"><span>일정 확정 전</span><span class="go">가이드 열기 →</span></span>
+      <span class="foot"><span>방문 12/4–5 · 업로드 ~12/6</span><span class="go">가이드 열기 →</span></span>
     </a>
     <a class="step" href="#seeding">
-      <span class="no">03 · 일정 확정 전</span>
+      <span class="no">03 · 12/9–12/11</span>
       <span class="name">상품 시딩</span>
       <span class="react">새로운 패션 아이템의 발견<br><b>“이건 나도 사고 싶다.”</b></span>
-      <span class="foot"><span>일정 확정 전</span><span class="go">가이드 열기 →</span></span>
+      <span class="foot"><span>할인코드 구매전환</span><span class="go">가이드 열기 →</span></span>
     </a>
   </div>
 
@@ -361,62 +377,54 @@ td.k{color:var(--accent)}
 <section id="v-offline" class="view" hidden><div class="wrap">
   <a class="back" href="#">← 허브로</a>
   <div class="guide-head">
-    <div class="eyebrow">02 · 오프라인 방문 콘텐츠 <span class="chip draft">초안</span></div>
+    <div class="eyebrow">02 · 오프라인 방문 콘텐츠</div>
     <h2>오프라인 방문 가이드</h2>
     <div class="facts">
-      <span class="fact"><b>업로드</b>12/4 오픈 이후 · 기간 확정 필요</span>
-      <span class="fact"><b>길이</b>~30초 (권장안)</span>
+      <span class="fact"><b>방문</b>12/4–12/5</span>
+      <span class="fact"><b>업로드</b>12/5–12/6 이내</span>
       <span class="fact"><b>목표 반응</b>“여기는 꼭 가봐야겠다.”</span>
     </div>
   </div>
 
+  <div>
+    <h2>콘텐츠 목적</h2>
+    <p>틈결 플래그십 방문 욕구 형성 및 실제 방문·구매 유도</p>
+  </div>
+
   <div class="concept">
     <div class="eyebrow">콘텐츠 콘셉트</div>
-    <q>내가 모델로 참여한 프로젝트가 드디어 공개됐어요. 성수 틈결 플래그십 스토어 다녀왔어요!</q>
+    <q>성수에서 쇼핑하러 갔다가 놀고, 체험하고, 새로운 취향까지 발견한 곳.</q>
+  </div>
+  <p class="lede">틈결은 단순히 상품을 구매하는 편집숍이 아닙니다. 틈결에서만 만날 수 있는 상품부터 직접 참여하는 체험, 매주 달라지는 패션 팝업까지 다양한 즐길거리를 소개해 주세요.</p>
+
+  <div>
+    <h2>필수 콘텐츠 구성</h2>
+    <div class="tbl"><table class="g3">
+      <thead><tr><th>구분</th><th>필수 촬영 내용</th><th>전달할 메시지</th></tr></thead>
+      <tbody>
+        <tr><td class="k">오리지널 상품</td><td data-label="촬영">ON-BAG POUCH 및 틈결 자체 상품</td><td data-label="메시지">다른 곳에서 만나기 어려운 디자인</td></tr>
+        <tr><td class="k">글로벌 IP 상품</td><td data-label="촬영">틈결 단독·선발매 상품 중심</td><td data-label="메시지">틈결에 방문해야 발견할 수 있는 상품</td></tr>
+        <tr><td class="k">DIY 프로모션</td><td data-label="촬영">직접 참여하고 완성하는 과정</td><td data-label="메시지">상품을 구매하는 것 이상의 즐거움</td></tr>
+        <tr><td class="k">2층 패션 팝업</td><td data-label="촬영">방문 주차의 패션 브랜드 및 구매 혜택</td><td data-label="메시지">매주 새로운 브랜드를 만날 수 있는 공간</td></tr>
+        <tr><td class="k">3층 체험존</td><td data-label="촬영">직접 체험하고 사진을 촬영하는 모습</td><td data-label="메시지">쇼핑과 함께 즐기는 이색적인 공간</td></tr>
+        <tr><td class="k">방문 안내</td><td data-label="촬영">위치·운영시간·진행 중인 혜택</td><td data-label="메시지">지금 방문해야 하는 이유</td></tr>
+      </tbody>
+    </table></div>
   </div>
 
   <div>
-    <h2>촬영 가이드</h2>
-    <div class="tbl"><table class="kv"><tbody>
-      <tr><td class="k">권장 영상 길이</td><td>~30초</td></tr>
-      <tr><td class="k">도입부</td><td>스토어 외관 또는 입구 컷으로 시작. 티징 콘텐츠에서 예고한 Fashion in Seoul 프로젝트가 공개된 현장임을 알려 주세요.</td></tr>
-      <tr><td class="k">매장 경험</td><td>매장 동선을 따라 둘러보며 성수에서만 할 수 있는 쇼핑 경험을 보여 주세요. 본인이 모델로 참여한 프로젝트 비주얼 앞 컷은 꼭 넣어 주세요.</td></tr>
-      <tr><td class="k">제품 노출</td><td>매장에서 마음에 든 아이템을 직접 착용·피팅하는 장면. 파우치 등 대표 아이템이 자연스럽게 보이도록.</td></tr>
-      <tr><td class="k">촬영 무드</td><td>감도 높은 패션 콘텐츠, 실제로 놀러 온 듯한 브이로그 톤</td></tr>
-      <tr><td class="k">제품 소개</td><td>상세 설명보다 “이런 걸 볼 수 있다” 수준의 가벼운 소개</td></tr>
-      <tr><td class="k">마무리</td><td>“성수 틈결 플래그십 스토어에서 Fashion in Seoul 프로젝트를 직접 만나보세요” 등 방문 유도 멘트</td></tr>
-      <tr><td class="k">필수 태그</td><td><span class="tag">@teumgyul_official</span> + 위치 태그 (틈결 플래그십 스토어)</td></tr>
-    </tbody></table></div>
-  </div>
-
-  <div>
-    <h2>꼭 담아야 할 장면</h2>
+    <h2>체크리스트</h2>
     <ul class="check">
-      <li>스토어 외관·간판 (어디인지 알 수 있게)</li>
-      <li>본인이 참여한 Fashion in Seoul 프로젝트 비주얼</li>
-      <li>매장 내부 분위기가 보이는 와이드 컷</li>
-      <li>아이템 착용·피팅 컷 1개 이상</li>
-      <li>방문 유도 멘트가 들어간 엔딩 컷</li>
+      <li>오리지널 상품 (ON-BAG POUCH)</li>
+      <li>글로벌 IP 단독·선발매 상품</li>
+      <li>DIY 프로모션 참여 과정</li>
+      <li>2층 패션 팝업 브랜드와 혜택</li>
+      <li>3층 체험존 체험·촬영 모습</li>
+      <li>위치·운영시간·진행 중인 혜택 안내</li>
+      <li>필수 태그 <span class="tag">@teumgyul_official</span></li>
     </ul>
   </div>
 
-  <div>
-    <h2>멘트 타입 (택 1)</h2>
-    <div class="types">
-      <div class="type">
-        <span class="label">TYPE A · 현장 브이로그</span>
-        <blockquote>“제가 모델로 참여한 프로젝트가 오늘 성수에서 공개됐어요! 같이 구경 가볼까요?”</blockquote>
-        <span class="hint">도착 → 둘러보기 → 착용 → 엔딩 순서로 자연스럽게</span>
-      </div>
-      <div class="type">
-        <span class="label">TYPE B · 성수 핫플 추천</span>
-        <blockquote>“성수 가면 여기는 꼭 들러보세요. 서울 패션을 이렇게 보여주는 곳은 처음이에요.”</blockquote>
-        <span class="hint">추천 포인트 2–3개를 빠르게 컷 전환</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="note">확인 필요: 업로드 기간, 매장 주소·운영 시간, 촬영 가능 구역, 현장 이벤트 유무</div>
   <nav class="pager"><a href="#teasing">← 이전: 모델 티징</a><a href="#seeding">다음: 상품 시딩 →</a></nav>
 </div></section>
 
@@ -424,63 +432,54 @@ td.k{color:var(--accent)}
 <section id="v-seeding" class="view" hidden><div class="wrap">
   <a class="back" href="#">← 허브로</a>
   <div class="guide-head">
-    <div class="eyebrow">03 · 상품 시딩 콘텐츠 <span class="chip draft">초안</span></div>
+    <div class="eyebrow">03 · 상품 시딩 콘텐츠</div>
     <h2>상품 시딩 가이드</h2>
     <div class="facts">
-      <span class="fact"><b>업로드</b>기간 확정 필요</span>
-      <span class="fact"><b>길이</b>~30초 (권장안)</span>
+      <span class="fact"><b>업로드</b>12/9–12/11 이내</span>
       <span class="fact"><b>목표 반응</b>“이건 나도 사고 싶다.”</span>
     </div>
   </div>
 
+  <div>
+    <h2>콘텐츠 목적</h2>
+    <p>상품 차별성 전달 및 인플루언서별 할인코드를 활용한 온라인 구매전환</p>
+  </div>
+
   <div class="concept">
-    <div class="eyebrow">콘텐츠 콘셉트</div>
-    <q>요즘 제일 손이 가는 아이템 발견했어요. 이건 진짜 매일 들고 다녀요.</q>
+    <div class="eyebrow">상품 기획 배경</div>
+    <q>파우치도 이제, 취향을 입는다.</q>
+  </div>
+  <div class="prose">
+    <p>매일 사용하는 파우치에도 패션처럼 나만의 취향을 담을 수 있지 않을까?</p>
+    <p>틈결의 ON-BAG POUCH는 셔츠, 비니, 스커트 등 패션에서 발견한 실루엣과 디테일을 파우치에 재해석한 오리지널 컬렉션입니다.</p>
+    <p>뷰티 파우치의 실용적인 기능은 유지하면서, 가방에 달거나 손에 들고 다니며 자신의 취향을 표현할 수 있는 새로운 패션 아이템을 제안합니다.</p>
   </div>
 
   <div>
-    <h2>촬영 가이드</h2>
-    <div class="tbl"><table class="kv"><tbody>
-      <tr><td class="k">권장 영상 길이</td><td>~30초</td></tr>
-      <tr><td class="k">도입부</td><td>첫 3초 안에 제품이 보이게 시작. 언박싱 또는 착용한 모습으로 시선을 잡아 주세요.</td></tr>
-      <tr><td class="k">제품 노출</td><td>디테일 클로즈업 + 실제 코디에 매치한 전신 컷을 함께</td></tr>
-      <tr><td class="k">촬영 무드</td><td>감도 높은 패션 콘텐츠, 데일리로 쓰는 모습</td></tr>
-      <tr><td class="k">제품 소개</td><td>내가 좋았던 포인트 2–3개를 본인 말로 (디자인, 소재, 활용도 등). 핵심 소구점은 브랜드 전달 내용 기준.</td></tr>
-      <tr><td class="k">마무리</td><td>구매처 안내 (성수 틈결 플래그십 스토어 / 온라인 채널)</td></tr>
-      <tr><td class="k">필수 태그</td><td><span class="tag">@teumgyul_official</span> + 제품 태그</td></tr>
-    </tbody></table></div>
+    <h2>제품 핵심 소구점 및 USP</h2>
+    <div class="tbl"><table class="g3">
+      <thead><tr><th>USP</th><th>소비자에게 전달할 구매 이유</th><th>권장 촬영 장면</th></tr></thead>
+      <tbody>
+        <tr><td class="k">01. 패션을 입은 파우치</td><td data-label="구매 이유">기존 파우치와 차별화된 패션 디테일</td><td data-label="촬영">소재·실루엣·디테일 클로즈업</td></tr>
+        <tr><td class="k">02. 패션 액세서리로 활용</td><td data-label="구매 이유">가방에 포인트를 더하고 나만의 스타일 표현</td><td data-label="촬영">가방 착용 전후 비교</td></tr>
+        <tr><td class="k">03. 실용적인 뷰티 수납</td><td data-label="구매 이유">뷰티 아이템을 효율적으로 정리할 수 있는 내부 구성</td><td data-label="촬영">실제 화장품 수납 및 사용</td></tr>
+        <tr><td class="k">04. 취향에 따른 선택</td><td data-label="구매 이유">서로 다른 디자인의 7종 컬렉션</td><td data-label="촬영">여러 제품 비교 및 최애 제품 선택</td></tr>
+        <tr><td class="k">05. 12월 선물 아이템</td><td data-label="구매 이유">친구 또는 나 자신에게 선물하기 좋은 패션 소품</td><td data-label="촬영">선물 포장·언박싱·제품 전달</td></tr>
+      </tbody>
+    </table></div>
   </div>
 
   <div>
-    <h2>멘트 타입 (택 1)</h2>
-    <div class="types">
-      <div class="type">
-        <span class="label">TYPE A · 데일리 코디형</span>
-        <blockquote>“요즘 출근할 때도, 놀러 갈 때도 이거 하나로 끝내요. 오늘 코디 같이 보실래요?”</blockquote>
-        <span class="hint">2–3가지 코디에 매치하며 활용도 강조</span>
-      </div>
-      <div class="type">
-        <span class="label">TYPE B · 디테일 리뷰형</span>
-        <blockquote>“처음 보자마자 이건 사야겠다 싶었던 이유, 디테일 보여드릴게요.”</blockquote>
-        <span class="hint">클로즈업 위주로 포인트를 하나씩</span>
-      </div>
+    <h2>추천 콘텐츠 유형</h2>
+    <div class="types five">
+      <div class="type"><span class="label">What's in my pouch</span><blockquote>“요즘 제가 매일 들고 다니는 파우치인데요.”</blockquote><span class="hint">핵심 구매 유도 · 수납 기능</span></div>
+      <div class="type"><span class="label">Bag styling</span><blockquote>“가방 새로 안 사고 분위기 바꾸는 방법.”</blockquote><span class="hint">핵심 구매 유도 · 스타일링 차별성</span></div>
+      <div class="type"><span class="label">Fashion item review</span><blockquote>“이게 옷이 아니라 파우치라고?”</blockquote><span class="hint">핵심 구매 유도 · 디자인 독창성</span></div>
+      <div class="type"><span class="label">December gift</span><blockquote>“12월에 친구한테 선물하기 좋은 아이템.”</blockquote><span class="hint">핵심 구매 유도 · 선물 수요</span></div>
+      <div class="type"><span class="label">Daily outfit</span><blockquote>“요즘 제 데일리룩에 꼭 추가하는 아이템.”</blockquote><span class="hint">핵심 구매 유도 · 일상 활용도</span></div>
     </div>
   </div>
 
-  <div class="dd">
-    <div class="do"><h3>이렇게 해 주세요</h3><ul>
-      <li>실제로 사용하는 장면 위주로</li>
-      <li>본인 스타일에 맞춘 코디</li>
-      <li>구매처를 엔딩에 명확히</li>
-    </ul></div>
-    <div class="dont"><h3>피해 주세요</h3><ul>
-      <li>확인되지 않은 기능·효과 표현</li>
-      <li>타 브랜드 제품과 비교·비하</li>
-      <li>광고 표기 누락</li>
-    </ul></div>
-  </div>
-
-  <div class="note">확인 필요: 시딩 제품 목록, 제품별 핵심 소구점, 업로드 기간, 온라인 구매 링크·할인 코드 유무</div>
   <nav class="pager"><a href="#offline">← 이전: 오프라인 방문</a><a href="#">허브 →</a></nav>
 </div></section>
 </main>
