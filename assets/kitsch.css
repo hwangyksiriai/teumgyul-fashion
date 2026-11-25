@@ -40,7 +40,21 @@ body{
   content:""; position:absolute; left:0; right:0; bottom:-11px; height:12px;
   background:radial-gradient(circle at 12px 0, var(--masthead) 11px, transparent 12px) 0 0/24px 12px repeat-x;
 }
-.band .wrap{padding-block:36px 34px}
+.band .wrap{padding-block:36px 34px;grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:center}
+.band .wrap > div:first-child,.band .meta{grid-column:1}
+/* banner photo: tilted polaroid of keyrings */
+.band .wrap::after{
+  content:""; grid-column:2; grid-row:1 / span 2; align-self:center;
+  width:clamp(220px,34vw,330px); aspect-ratio:521/351;
+  background:#fff url("/images/banner-keyrings.png") center/cover no-repeat;
+  background-clip:content-box; padding:8px 8px 26px; box-sizing:content-box;
+  border-radius:4px; box-shadow:5px 5px 0 var(--accent), 0 6px 18px rgba(224,72,156,.25);
+  transform:rotate(3deg);
+}
+@media (max-width:640px){
+  .band .wrap{grid-template-columns:1fr}
+  .band .wrap::after{grid-column:1; grid-row:auto; width:calc(100% - 22px); justify-self:center; margin-top:10px; transform:rotate(-1.5deg)}
+}
 .band .brand{font-size:clamp(30px,6.4vw,42px);color:var(--accent);text-shadow:3px 3px 0 #fff}
 .band h1{font-family:var(--f-cute);font-weight:400;letter-spacing:-.01em;font-size:clamp(30px,6.6vw,48px);color:var(--ink)}
 .band .meta{font-family:var(--f-cute);font-style:normal;font-size:15px;color:var(--accent);border-top:2px dashed #fff;padding-top:12px}
