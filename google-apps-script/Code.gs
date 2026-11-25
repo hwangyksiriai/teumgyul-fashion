@@ -69,7 +69,7 @@ function ensureHeader_(sheet) {
 }
 
 function getSheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SpreadsheetApp.openById('1POVacWQKlPuGoz3NnpE9bWfUBpltbJyniMeAJojParI');
   return ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
 }
 
